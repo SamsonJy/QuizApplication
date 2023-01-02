@@ -1,8 +1,11 @@
 package com.bfs.filestructureguide.controller;
 
 import com.bfs.filestructureguide.command.LoginCommand;
+import com.bfs.filestructureguide.command.ScoresWrapper;
 import com.bfs.filestructureguide.command.UserCommand;
+import com.bfs.filestructureguide.domain.Quiz;
 import com.bfs.filestructureguide.domain.User;
+import com.bfs.filestructureguide.service.GameService;
 import com.bfs.filestructureguide.service.QuizService;
 import com.bfs.filestructureguide.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +13,12 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Controller
 public class UserController {
@@ -23,6 +29,9 @@ public class UserController {
 
     @Autowired
     private QuizService quizService;
+
+    @Autowired
+    private GameService gameService;
 
 
     @GetMapping(value = {"/", "/index1"})
@@ -80,5 +89,31 @@ public class UserController {
         session.setAttribute("user", u);
         session.setAttribute("userId", u.getId());
         session.setAttribute("role", u.getRole());
+    }
+
+    @GetMapping(value = {"/user/home"})
+    public String userHomePage(Model m) {
+        Collection<Quiz> quizes = quizService.getQuizList();
+        m.addAttribute("quizList", quizes);
+        return "userHomePage";
+    }
+
+    @RequestMapping(value = {"/admin/dashboard"}, method = RequestMethod.GET)
+    public String adminDashboard() {
+        return "dashboard_admin";
+    }
+
+    @RequestMapping(value = "/user/info", method = RequestMethod.GET)
+    public ModelAndView userInfo(WebRequest request, HttpSession session, Model m) {
+        User user = (User) session.getAttribute("user");
+        ArrayList<ScoresWrapper> sws = gameService.userHighScores(user.getId());
+        m.addAttribute("sws", sws);
+        return new ModelAndView("userInfoPage", "user", user);
+    }
+
+
+    @RequestMapping(value = "/user/about", method = RequestMethod.GET)
+    public String userAbout(){
+        return "aboutInfo";
     }
 }

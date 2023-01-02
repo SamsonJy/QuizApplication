@@ -13,10 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
- *
- * @author Zika
- */
+
 public class UserAnswerDAOImpl extends BaseDAO implements EntityDAO<UserAnswer>{
 
     @Override
