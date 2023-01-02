@@ -10,10 +10,6 @@ import com.bfs.filestructureguide.domain.Question;
 
 import java.util.List;
 
-/**
- *
- * @author Zika
- */
 public interface QuestionService {
     
     public int createQuestion(Question q);

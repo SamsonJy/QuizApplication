@@ -13,10 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- *
- * @author Zika
- */
 
 @Repository
 public class UserDAOImpl extends BaseDAO implements UserDAO {

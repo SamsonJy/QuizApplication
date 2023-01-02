@@ -8,10 +8,6 @@ package com.bfs.filestructureguide.command;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- *
- * @author Zika
- */
 
 @Getter
 @Setter
