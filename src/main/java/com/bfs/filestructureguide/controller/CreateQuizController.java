@@ -15,10 +15,7 @@ import com.bfs.filestructureguide.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -35,7 +32,7 @@ public class CreateQuizController {
     
     int quizId;
 
-    @RequestMapping(value = "admin/createQuiz", method = RequestMethod.POST)
+    @PostMapping(value = "admin/createQuiz")
     @ResponseBody
     public Quiz handleCreateQuiz(@RequestBody QuizCommand cmd) {
         try {

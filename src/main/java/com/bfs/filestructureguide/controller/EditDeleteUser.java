@@ -29,7 +29,7 @@ public class EditDeleteUser {
         return "userListAdmin"; // JSP view
     }
 
-    @RequestMapping(value = "admin/userDel", method = RequestMethod.POST)    
+    @PostMapping(value = "admin/userDel")
     public @ResponseBody void deleteUser(@RequestParam Integer id) {
         try {
             System.out.println(id);
@@ -39,7 +39,7 @@ public class EditDeleteUser {
         }
     }
 
-    @RequestMapping(value = "admin/editUser", method = RequestMethod.POST)
+    @PostMapping(value = "admin/editUser")
     @ResponseBody
     public void handleEditUser(@RequestBody User user) {
         try {

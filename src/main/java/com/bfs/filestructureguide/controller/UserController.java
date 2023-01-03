@@ -98,12 +98,12 @@ public class UserController {
         return "userHomePage";
     }
 
-    @RequestMapping(value = {"/admin/dashboard"}, method = RequestMethod.GET)
+    @GetMapping(value = {"/admin/dashboard"})
     public String adminDashboard() {
         return "dashboard_admin";
     }
 
-    @RequestMapping(value = "/user/info", method = RequestMethod.GET)
+    @GetMapping(value = "/user/info")
     public ModelAndView userInfo(WebRequest request, HttpSession session, Model m) {
         User user = (User) session.getAttribute("user");
         ArrayList<ScoresWrapper> sws = gameService.userHighScores(user.getId());
@@ -112,7 +112,7 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/user/about", method = RequestMethod.GET)
+    @GetMapping(value = "/user/about")
     public String userAbout(){
         return "aboutInfo";
     }

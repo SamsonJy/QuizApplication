@@ -46,7 +46,7 @@ public class QuizController {
     }
 
 
-    @RequestMapping(value = "user/processQuiz", method = RequestMethod.POST)
+    @PostMapping(value = "user/processQuiz")
     public ModelAndView processQuiz(@ModelAttribute("cmd") ProcessQuiz cmd, HttpSession session) throws Exception {
         Game game = (Game) session.getAttribute("game");  
         game.setScore(gameService.checkCorrectAnswer(cmd.getAnswers()));

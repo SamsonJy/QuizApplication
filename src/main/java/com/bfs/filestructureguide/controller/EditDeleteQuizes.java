@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-/**
- *
- * @author Zika
- */
+
 @Controller
 public class EditDeleteQuizes {
 
@@ -37,14 +34,14 @@ public class EditDeleteQuizes {
     @Autowired
     AnswerService answerService;
 
-    @RequestMapping(value = "admin/quizList", method = RequestMethod.GET)
+    @GetMapping(value = "admin/quizList")
     public String adminQuizList(Model m, HttpSession session) {
         ArrayList<Quiz> quizes = (ArrayList<Quiz>) quizService.getQuizList();
         m.addAttribute("quizList", quizes);
         return "quizListAdmin"; // JSP view
     }
 
-    @RequestMapping(value = "admin/quizDel", method = RequestMethod.POST)
+    @PostMapping(value = "admin/quizDel")
     public @ResponseBody
     void deleteQuiz(@RequestParam Integer id) {
         try {
@@ -55,14 +52,14 @@ public class EditDeleteQuizes {
         }
     }
 
-    @RequestMapping(value = "admin/quizEdit", method = RequestMethod.GET)
+    @GetMapping(value = "admin/quizEdit")
     @ResponseBody
     public ArrayList<Question> editQuizForm(@RequestParam("quizId") Integer id) {
         ArrayList<Question> questions = (ArrayList<Question>) questionService.questionsInQuiz(id);
         return questions;
     }
 
-    @RequestMapping(value = "admin/editQuiz", method = RequestMethod.POST)
+    @PostMapping(value = "admin/editQuiz")
     @ResponseBody
     public void handleEditQuiz(@RequestBody QuizFormCommand cmd) {
         try {
