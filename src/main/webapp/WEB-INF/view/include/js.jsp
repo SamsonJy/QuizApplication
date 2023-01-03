@@ -1,9 +1,3 @@
-<%-- 
-    Document   : js
-    Created on : Dec 19, 2018, 4:01:56 PM
-    Author     : Zika
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : menu2
-    Created on : Aug 2, 2018, 2:29:42 PM
-    Author     : Zika
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="s"%>

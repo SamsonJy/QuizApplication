@@ -1,8 +1,4 @@
-<%-- 
-    Document   : css
-    Created on : Dec 19, 2018, 4:03:06 PM
-    Author     : Zika
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
